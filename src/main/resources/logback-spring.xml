@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <include resource="org/springframework/boot/logging/logback/defaults.xml"/>
+    <springProperty name="APP_NAME" source="spring.application.name" defaultValue="presentation-advert-api"/>
+    <springProperty name="FACILITY" source="logging.facility" defaultValue="unknownFacilityValue"/>
+    <springProperty name="DOMAIN_NAME" source="logging.domain" defaultValue="unknownDomainName"/>
+
+    <property name="CONSOLE_LOG_PATTERN"
+              value="%clr(%d{yyyy-MM-dd HH:mm:xss.SSS}){faint} %clr(%5p) %clr(${PID:- }){magenta} %clr(---){faint} %clr([%15.15t]){faint} %clr(---){faint} %clr(%-40.40logger{39}){cyan} %clr(:){faint} %clr(TraceId: %X{traceId}){magenta} %m%n%wex"/>
+
+    <include resource="org/springframework/boot/logging/logback/console-appender.xml"/>
+    <logger level="ERROR" name="org.springframework"/>
+    <logger level="ERROR" name="org.apache.http"/>
+    <logger level="ERROR" name="org.apache.tomcat"/>
+    <logger level="INFO" name="org.apache.kafka"/>
+    <logger level="ERROR" name="springfox.documentation"/>
+    <logger level="ERROR" name="com.couchbase"/>
+    <logger level="ERROR" name="io.lettuce.core"/>
+    <logger level="INFO" name="com.secondhand"/>
+    <logger level="ERROR" name="org.hibernate.SQL"/>
+    <logger level="INFO" name="org.springframework.kafka"/>
+
+    <root level="INFO">
+        <appender-ref ref="CONSOLE"/>
+    </root>
+
+</configuration>
+

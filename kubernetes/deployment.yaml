@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: advert-api
+  labels:
+    app: advert-api
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: advert-api
+  template:
+    metadata:
+      labels:
+        app: advert-api
+    spec:
+      containers:
+        - name: advert-api
+          image: aykanferhat/presentation-advert-api:1F2C9B
+          env:
+            - name: SERVER_PORT
+              value: "8080"
+            - name: DATABASE_URL
+              value: "jdbc:mysql://mysql:3306/advert?characterEncoding=UTF-8"
+            - name: DATABASE_USERNAME
+              value: "root"
+            - name: DATABASE_PASSWORD
+              value: "secret"
+            - name: KAFKA_HOST
+              value: "kafka:29092"
+          ports:
+            - containerPort: 8080
+
