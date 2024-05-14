@@ -4,11 +4,9 @@ import an.awesome.pipelinr.Pipeline;
 import com.secondhand.presentationadvertapi.application.commands.CreateCategoryCommand;
 import com.secondhand.presentationadvertapi.application.queries.GetCategoryQuery;
 import com.secondhand.presentationadvertapi.application.service.IdGenerationService;
-import com.secondhand.presentationadvertapi.infrastructure.controller.mapper.CategoryResponseMapper;
-import com.secondhand.presentationadvertapi.infrastructure.controller.model.CategoryResponse;
+import com.secondhand.presentationadvertapi.application.queries.model.CategoryDTO;
 import com.secondhand.presentationadvertapi.infrastructure.controller.model.CreateCategoryRequest;
 import com.secondhand.presentationadvertapi.infrastructure.controller.util.ResponseUtils;
-import com.secondhand.presentationadvertapi.domain.Category;
 import jakarta.validation.Valid;
 import org.hibernate.StaleObjectStateException;
 import org.springframework.dao.ConcurrencyFailureException;
@@ -45,9 +43,8 @@ public class CategoryController {
 
     @GetMapping("/{id}")
     @Retryable(retryFor = {ConcurrencyFailureException.class, StaleObjectStateException.class}, backoff = @Backoff(delay = 100L, multiplier = 3), maxAttempts = 3)
-    public ResponseEntity<CategoryResponse> get(@PathVariable Long id) {
-        Category category = pipeline.send(new GetCategoryQuery(id));
-        CategoryResponse categoryResponse = CategoryResponseMapper.map(category);
-        return ResponseEntity.ok(categoryResponse);
+    public ResponseEntity<CategoryDTO> get(@PathVariable Long id) {
+        CategoryDTO category = pipeline.send(new GetCategoryQuery(id));
+        return ResponseEntity.ok(category);
     }
 }

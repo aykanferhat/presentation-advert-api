@@ -4,11 +4,9 @@ import an.awesome.pipelinr.Pipeline;
 import com.secondhand.presentationadvertapi.application.commands.CreateAdvertCommand;
 import com.secondhand.presentationadvertapi.application.queries.GetAdvertQuery;
 import com.secondhand.presentationadvertapi.application.service.IdGenerationService;
-import com.secondhand.presentationadvertapi.infrastructure.controller.mapper.AdvertResponseMapper;
-import com.secondhand.presentationadvertapi.infrastructure.controller.model.AdvertResponse;
+import com.secondhand.presentationadvertapi.application.queries.model.AdvertDTO;
 import com.secondhand.presentationadvertapi.infrastructure.controller.model.CreateAdvertRequest;
 import com.secondhand.presentationadvertapi.infrastructure.controller.util.ResponseUtils;
-import com.secondhand.presentationadvertapi.domain.Advert;
 import jakarta.validation.Valid;
 import org.hibernate.StaleObjectStateException;
 import org.springframework.dao.ConcurrencyFailureException;
@@ -46,9 +44,8 @@ public class AdvertController {
     @GetMapping("/{id}")
     @Transactional
     @Retryable(retryFor = {ConcurrencyFailureException.class, StaleObjectStateException.class}, backoff = @Backoff(delay = 100L, multiplier = 3), maxAttempts = 3)
-    public ResponseEntity<AdvertResponse> get(@PathVariable Long id) {
-        Advert advert = pipeline.send(new GetAdvertQuery(id));
-        AdvertResponse advertResponse = AdvertResponseMapper.map(advert);
-        return ResponseEntity.ok(advertResponse);
+    public ResponseEntity<AdvertDTO> get(@PathVariable Long id) {
+        AdvertDTO advert = pipeline.send(new GetAdvertQuery(id));
+        return ResponseEntity.ok(advert);
     }
 }

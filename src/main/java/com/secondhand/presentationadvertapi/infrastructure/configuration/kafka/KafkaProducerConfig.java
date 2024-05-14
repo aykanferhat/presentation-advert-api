@@ -28,7 +28,6 @@ public class KafkaProducerConfig {
     @Bean
     public ProducerFactory<String, Object> producerFactory() throws UnknownHostException {
         Map<String, Object> configProps = new HashMap<>();
-        System.out.println(kafkaProperties.getServers());
         configProps.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, kafkaProperties.getServers());
         configProps.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class);
         configProps.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, StringSerializer.class);
