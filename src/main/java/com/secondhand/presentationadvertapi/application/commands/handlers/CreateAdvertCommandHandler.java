@@ -7,6 +7,8 @@ import com.secondhand.presentationadvertapi.application.repository.CategoryRepos
 import com.secondhand.presentationadvertapi.domain.Advert;
 import com.secondhand.presentationadvertapi.domain.Category;
 import com.secondhand.presentationadvertapi.domain.exceptions.NotFoundException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -14,6 +16,8 @@ public class CreateAdvertCommandHandler extends CommandHandler<CreateAdvertComma
     private final AdvertRepository advertRepository;
 
     private final CategoryRepository categoryRepository;
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(CreateAdvertCommandHandler.class);
 
     public CreateAdvertCommandHandler(AdvertRepository advertRepository, CategoryRepository categoryRepository) {
         this.advertRepository = advertRepository;
@@ -29,5 +33,6 @@ public class CreateAdvertCommandHandler extends CommandHandler<CreateAdvertComma
         Category category = optionalCategory.get();
         Advert advert = Advert.create(command.getAdvertId(), command.getTitle(), command.getDescription(), category);
         advertRepository.save(advert);
+        LOGGER.info("Advert created, id: {}", command.getAdvertId());
     }
 }
