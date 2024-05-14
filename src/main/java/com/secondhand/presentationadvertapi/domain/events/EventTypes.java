@@ -4,8 +4,10 @@ import lombok.Getter;
 
 @Getter
 public enum EventTypes {
+
     ADVERT_CREATED_EVENT("advert.created"),
 
+    ADVERT_TITLE_CHANGED_EVENT("advert.title-changed"),
 
     CATEGORY_CREATED_EVENT("category.created");
 

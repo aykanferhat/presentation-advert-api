@@ -1,11 +1,13 @@
 package com.secondhand.presentationadvertapi.infrastructure.controller;
 
 import an.awesome.pipelinr.Pipeline;
+import com.secondhand.presentationadvertapi.application.commands.ChangeAdvertTitleCommand;
 import com.secondhand.presentationadvertapi.application.commands.CreateAdvertCommand;
 import com.secondhand.presentationadvertapi.application.queries.GetAdvertQuery;
 import com.secondhand.presentationadvertapi.application.service.IdGenerationService;
 import com.secondhand.presentationadvertapi.application.queries.model.AdvertDTO;
 import com.secondhand.presentationadvertapi.infrastructure.controller.model.CreateAdvertRequest;
+import com.secondhand.presentationadvertapi.infrastructure.controller.model.UpdateAdvertTitleRequest;
 import com.secondhand.presentationadvertapi.infrastructure.controller.util.ResponseUtils;
 import jakarta.validation.Valid;
 import org.hibernate.StaleObjectStateException;
@@ -39,6 +41,18 @@ public class AdvertController {
         long advertId = idGenerationService.generateAdvertId();
         pipeline.send(new CreateAdvertCommand(advertId, request.getTitle(), request.getDescription(), request.getCategoryId()));
         return ResponseUtils.createdResponse(getClass(), advertId);
+    }
+
+    @PutMapping("/{id}/title:update")
+    @Transactional
+    @Retryable(retryFor = {ConcurrencyFailureException.class, StaleObjectStateException.class}, backoff = @Backoff(delay = 100L, multiplier = 3), maxAttempts = 3)
+    public ResponseEntity updateTitle(
+            @RequestHeader(name = "X-UserEmail") String userEmail,
+            @PathVariable Long id,
+            @RequestBody @Valid UpdateAdvertTitleRequest request
+    ) {
+        pipeline.send(new ChangeAdvertTitleCommand(id, request.getTitle()));
+        return ResponseEntity.ok().build();
     }
 
     @GetMapping("/{id}")
