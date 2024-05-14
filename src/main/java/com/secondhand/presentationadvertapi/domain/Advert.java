@@ -1,6 +1,7 @@
 package com.secondhand.presentationadvertapi.domain;
 
 import com.secondhand.presentationadvertapi.domain.events.advert.AdvertCreatedEvent;
+import com.secondhand.presentationadvertapi.domain.events.advert.AdvertTitleChangedEvent;
 import com.secondhand.presentationadvertapi.domain.hibernate.AggregateRoot;
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -51,5 +52,11 @@ public class Advert extends AggregateRoot<Advert> {
 
     public static Advert create(long id, String title, String description, Category category) {
         return new Advert(id, title, description, category);
+    }
+
+    public void changeTitle(String title) {
+        String oldTitle = this.title;
+        this.title = title;
+        raiseEvent(new AdvertTitleChangedEvent(this.getId(), oldTitle, title));
     }
 }
