@@ -1,4 +1,4 @@
-package com.secondhand.presentationadvertapi.controller.model;
+package com.secondhand.presentationadvertapi.infrastructure.controller.model;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;

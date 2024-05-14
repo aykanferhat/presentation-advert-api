@@ -1,13 +1,13 @@
-package com.secondhand.presentationadvertapi.controller;
+package com.secondhand.presentationadvertapi.infrastructure.controller;
 
 import an.awesome.pipelinr.Pipeline;
 import com.secondhand.presentationadvertapi.application.commands.CreateAdvertCommand;
 import com.secondhand.presentationadvertapi.application.queries.GetAdvertQuery;
 import com.secondhand.presentationadvertapi.application.service.IdGenerationService;
-import com.secondhand.presentationadvertapi.controller.mapper.AdvertResponseMapper;
-import com.secondhand.presentationadvertapi.controller.model.AdvertResponse;
-import com.secondhand.presentationadvertapi.controller.model.CreateAdvertRequest;
-import com.secondhand.presentationadvertapi.controller.util.ResponseUtils;
+import com.secondhand.presentationadvertapi.infrastructure.controller.mapper.AdvertResponseMapper;
+import com.secondhand.presentationadvertapi.infrastructure.controller.model.AdvertResponse;
+import com.secondhand.presentationadvertapi.infrastructure.controller.model.CreateAdvertRequest;
+import com.secondhand.presentationadvertapi.infrastructure.controller.util.ResponseUtils;
 import com.secondhand.presentationadvertapi.domain.Advert;
 import jakarta.validation.Valid;
 import org.hibernate.StaleObjectStateException;

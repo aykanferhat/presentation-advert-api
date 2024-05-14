@@ -1,6 +1,6 @@
-package com.secondhand.presentationadvertapi.controller.exception;
+package com.secondhand.presentationadvertapi.infrastructure.controller.exception;
 
-import com.secondhand.presentationadvertapi.controller.model.ErrorResponse;
+import com.secondhand.presentationadvertapi.infrastructure.controller.model.ErrorResponse;
 import com.secondhand.presentationadvertapi.domain.exceptions.NotFoundException;
 import com.secondhand.presentationadvertapi.infrastructure.service.MessageResourceService;
 import jakarta.persistence.EntityNotFoundException;

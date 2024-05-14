@@ -1,8 +1,6 @@
-package com.secondhand.presentationadvertapi.controller.mapper;
+package com.secondhand.presentationadvertapi.infrastructure.controller.mapper;
 
-import com.secondhand.presentationadvertapi.controller.model.AdvertResponse;
-import com.secondhand.presentationadvertapi.controller.model.CategoryResponse;
-import com.secondhand.presentationadvertapi.domain.Advert;
+import com.secondhand.presentationadvertapi.infrastructure.controller.model.CategoryResponse;
 import com.secondhand.presentationadvertapi.domain.Category;
 
 public class CategoryResponseMapper {
@@ -10,7 +8,8 @@ public class CategoryResponseMapper {
     public static CategoryResponse map(Category category) {
         return new CategoryResponse(
                 category.getId(),
-                category.getName()
+                category.getName(),
+                category.getVersion()
         );
 //        return new AdvertResponse(
 //                advert.getId(),

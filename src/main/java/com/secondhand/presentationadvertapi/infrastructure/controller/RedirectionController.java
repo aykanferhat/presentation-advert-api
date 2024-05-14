@@ -1,4 +1,4 @@
-package com.secondhand.presentationadvertapi.controller;
+package com.secondhand.presentationadvertapi.infrastructure.controller;
 
 import io.swagger.v3.oas.annotations.Hidden;
 import jakarta.servlet.http.HttpServletResponse;

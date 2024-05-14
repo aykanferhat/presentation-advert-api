@@ -19,3 +19,5 @@ docker push $latestImage
 kubectl set image deployment/advert-api advert-api=$taggedImage
 
 kubectl describe deployments.apps advert-api
+
+## https://hub.docker.com/repository/docker/aykanferhat/presentation-advert-api

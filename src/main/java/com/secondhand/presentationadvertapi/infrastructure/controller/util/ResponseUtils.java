@@ -1,4 +1,4 @@
-package com.secondhand.presentationadvertapi.controller.util;
+package com.secondhand.presentationadvertapi.infrastructure.controller.util;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

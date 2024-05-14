@@ -1,13 +1,13 @@
-package com.secondhand.presentationadvertapi.controller;
+package com.secondhand.presentationadvertapi.infrastructure.controller;
 
 import an.awesome.pipelinr.Pipeline;
 import com.secondhand.presentationadvertapi.application.commands.CreateCategoryCommand;
 import com.secondhand.presentationadvertapi.application.queries.GetCategoryQuery;
 import com.secondhand.presentationadvertapi.application.service.IdGenerationService;
-import com.secondhand.presentationadvertapi.controller.mapper.CategoryResponseMapper;
-import com.secondhand.presentationadvertapi.controller.model.CategoryResponse;
-import com.secondhand.presentationadvertapi.controller.model.CreateCategoryRequest;
-import com.secondhand.presentationadvertapi.controller.util.ResponseUtils;
+import com.secondhand.presentationadvertapi.infrastructure.controller.mapper.CategoryResponseMapper;
+import com.secondhand.presentationadvertapi.infrastructure.controller.model.CategoryResponse;
+import com.secondhand.presentationadvertapi.infrastructure.controller.model.CreateCategoryRequest;
+import com.secondhand.presentationadvertapi.infrastructure.controller.util.ResponseUtils;
 import com.secondhand.presentationadvertapi.domain.Category;
 import jakarta.validation.Valid;
 import org.hibernate.StaleObjectStateException;

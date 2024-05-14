@@ -1,4 +1,4 @@
-package com.secondhand.presentationadvertapi.controller.model;
+package com.secondhand.presentationadvertapi.infrastructure.controller.model;
 
 import com.secondhand.presentationadvertapi.common.Clock;
 import com.secondhand.presentationadvertapi.common.DateUtils;

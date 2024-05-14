@@ -1,6 +1,6 @@
-package com.secondhand.presentationadvertapi.controller.mapper;
+package com.secondhand.presentationadvertapi.infrastructure.controller.mapper;
 
-import com.secondhand.presentationadvertapi.controller.model.AdvertResponse;
+import com.secondhand.presentationadvertapi.infrastructure.controller.model.AdvertResponse;
 import com.secondhand.presentationadvertapi.domain.Advert;
 
 public class AdvertResponseMapper {
@@ -10,7 +10,8 @@ public class AdvertResponseMapper {
                 advert.getId(),
                 advert.getTitle(),
                 advert.getDescription(),
-                advert.getCategory().getId()
+                advert.getCategory().getId(),
+                advert.getVersion()
         );
 //        return new AdvertResponse(
 //                advert.getId(),

@@ -1,0 +1,12 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="Run - Local" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+    <envs>
+      <env name="ACTIVE_PROFILE" value="stage" />
+    </envs>
+    <module name="presentation-advert-api" />
+    <option name="SPRING_BOOT_MAIN_CLASS" value="com.secondhand.presentationadvertapi.PresentationAdvertApiApplication" />
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>

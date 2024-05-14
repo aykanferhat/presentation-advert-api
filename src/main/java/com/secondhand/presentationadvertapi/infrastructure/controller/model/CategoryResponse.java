@@ -1,4 +1,4 @@
-package com.secondhand.presentationadvertapi.controller.model;
+package com.secondhand.presentationadvertapi.infrastructure.controller.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -6,7 +6,7 @@ import lombok.Getter;
 @Getter
 @AllArgsConstructor
 public class CategoryResponse {
-
     private Long id;
     private String name;
+    private Long version;
 }
